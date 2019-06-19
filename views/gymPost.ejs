@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+    <button><a href="/gymChat">Back</a></button>
+    <% for (let k = 0; k < people.length; k++) { %>
+    <%if(post.userId == people[k].id) {%>
+        <h5>Post By: <%= people[k].name %></h5>
+    <%}%>
+    <%}%>
+    <h5><%= post.title %></h5>
+    <p><%=post.post%></p>
+
+    <h5>Add comment</h5>
+    <form action="/addPostComment/<%= post.id %>" method="post">
+        <textarea class="form-control mb-2" name="comment" placeholder="Comment"></textarea>
+        <input class="form-control" type="submit">
+    </form>
+    <% for (let i = comments.length-1; i >= 0; i--) { %>
+        <div class="card p-3 m-2">
+            <% for (let j = 0; j < people.length; j++) { %>
+            <%if(comments[i].userId == people[j].id) {%>
+                <p><%= people[j].name %></p>
+                <p><%= comments[i].comment %></p>
+            <%}%>
+            <%}%>
+        </div>
+    <%}%>
+</div>
+</body>
+
+</html>

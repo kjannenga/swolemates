@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center pt-5">
+            <div class="section text-center">
+                <div class="pt-4">
+
+                    <button><a href="/profile">Back</a></button>
+                    <% if (user.isAdmin == 1) {%>
+                    <h5>Add Event</h5>
+                    <form action="/addGymEvent" method="post">
+                        <input class="form-control mb-2" type='text' name="title" placeholder="Title">
+                        <textarea class="form-control mb-2" name="eventInfo" placeholder="Event Info"></textarea>
+                        <input class="form-control mb-2" type='text' name="date" placeholder="Date">
+                        <input class="form-control" type="submit">
+                    </form>
+                    <%}%>
+                    <h5>Events</h5>
+                    <% for (let i = 0; i < events.length; i++) { %>
+                        <a href="gymEvent/<%= events[i].id %>">
+                            <div class="card p-3 m-2">
+                                <h5><%=events[i].title%></h5>
+                                <p>At <%= gyms.gymName %></p>
+                                <p><%= events[i].eventInfo %></p>
+                                <p><%=events[i].date%></p>
+                            </div>
+                        </a>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

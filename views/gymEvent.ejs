@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+    <button><a href="/gymEvents">Back</a></button>
+    <h5>Event</h5>
+    <h5><%= events.title %></h5>
+    <p><%=events.eventInfo%></p>
+    <p><%= events.date%></p>
+    <h5>Add comment</h5>
+    <form action="/addGymComment/<%= events.id %>" method="post">
+        <textarea class="form-control mb-2" name="comment" placeholder="Comment"></textarea>
+        <input class="form-control" type="submit">
+    </form>
+    <% for (let i = 0; i < comments.length; i++) { %>
+            <div class="card p-3 m-2">
+                <% for (let j = 0; j < people.length; j++) { %>
+                <%if(comments[i].userId == people[j].id) {%>
+                <p><%= people[j].name %></p>
+                <p><%= comments[i].comment %></p>
+                <%}%>
+                <%}%>
+            </div>
+    <%}%>
+</div>
+</body>
+
+</html>
