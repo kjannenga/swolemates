@@ -28,31 +28,52 @@
 
 </nav>
 <div class="container">
-    <div class="row d-flex justify-content-center pt-5">
-        <div class="section text-center">
-            <div class="pt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-2">
+            <h5 >Add Post</h5>
+        </div>
+        <div class="col-8">
+            <form  action="/addGymPost" method="post" >
+                <input class="form-control mb-2" type='text' name="title" placeholder="Title">
+                <textarea class="form-control mb-2" name="post" placeholder="Post" ></textarea>
+        </div>
 
-                <button><a href="/profile">Back</a></button>
-                <h5>Add Post</h5>
-                <form action="/addGymPost" method="post">
-                    <input class="form-control mb-2" type='text' name="title" placeholder="Title">
-                    <textarea class="form-control mb-2" name="post" placeholder="Post"></textarea>
-                    <input class="form-control" type="submit">
-                </form>
-                <h5>Posts</h5>
-                <% for (let i = 0; i < posts.length; i++) { %>
-                <a href="gymPost/<%= posts[i].id %>">
-                <div class="card p-3 m-2">
-                    <% for (let j = 0; j < people.length; j++) { %>
-                        <%if(posts[i].userId == people[j].id) {%>
-                            <h5><%=posts[i].title%></h5>
-                            <p>Post By: <%= people[j].name %></p>
-                            <p><%= posts[i].post %></p>
+        <div class="col-2">
+            <input class="form-control" type="submit" >
+            </form>
+        </div>
+
+
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="section col-7">
+                <h5 class="text-center">Posts</h5>
+            <% for (let k = 0; k < posts.length ; k++) { %>
+                <a href="gymPost/<%= posts[k].id %>">
+                    <div class="card p-3 my-2 text-dark overflow-hidden" style="height:10em;">
+                        <div class="row">
+                            <div class="col-8">
+                                <% for (let j = 0; j < people.length; j++) { %>
+                                <%if(posts[k].userId == people[j].id) {%>
+                                <h5><%=posts[k].title%></h5>
+                                <p>Post By: <%= people[j].name %></p>
+                                <p style="font-size:70%"><%= posts[k].post %></p>
+                            </div>
+                            <div class="col-4">
+                                <div class="mx-4" style="background-image: url(<%=people[j].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:6em;"></div>
+                                <div>
+                                    <p style="font-size:70%">Posted on: </p>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <%}%>
-                    <%}%>
-                </div>
+                        <%}%>
+                    </div>
                 </a>
-                <%}%>
+            <%}%>
             </div>
         </div>
     </div>
