@@ -27,7 +27,7 @@
         </div>
 
 </nav>
-<div class="container">
+<div class="container-fluid">
     <div class="row d-flex justify-content-center">
         <div class="section text-center col-5">
             <p>Your Gym :  <span><%= gyms.gymName %></span></p>
@@ -39,11 +39,21 @@
             <h5>Most Recent Events</h5>
             <% for (let i = 0; i < events.length && i < 2; i++) { %>
                 <a href="gymEvent/<%= events[i].id %>">
-                    <div class="card p-3 m-2" style="height:10em;">
-                        <h5><%=events[i].title%></h5>
-                        <p>At <%= gyms.gymName %></p>
-                        <p><%= events[i].eventInfo %></p>
-                        <p><%=events[i].date%></p>
+                    <div class="card p-3 my-2 text-dark overflow-hidden" style="height:10em;">
+                        <div class="row">
+                            <div class="col-8">
+                                <h5><%=events[i].title%></h5>
+                                <p style="font-size:70%"><%= events[i].eventInfo %></p>
+                            </div>
+                            <div class="col-3" style="font-size: 70%">
+                                <p> date: <%=events[i].date%></p>
+                                <p>time: </p>
+                                <p>intensity: </p>
+
+                            </div>
+
+                        </div>
+
                     </div>
                 </a>
             <%}%>
@@ -53,14 +63,27 @@
         </div>
         <div class="col-5">
             <h5>Most Recent Posts</h5>
+
             <% for (let k = 0; k < posts.length && k < 2 ; k++) { %>
                 <a href="gymPost/<%= posts[k].id %>">
-                    <div class="card p-3 m-2" style="height:10em;">
-                        <% for (let j = 0; j < people.length; j++) { %>
-                        <%if(posts[k].userId == people[j].id) {%>
-                        <h5><%=posts[k].title%></h5>
-                        <p>Post By: <%= people[j].name %></p>
-                        <p><%= posts[k].post %></p>
+                    <div class="card p-3 my-2 text-dark overflow-hidden" style="height:10em;">
+                        <div class="row">
+                            <div class="col-8">
+                                <% for (let j = 0; j < people.length; j++) { %>
+                                <%if(posts[k].userId == people[j].id) {%>
+                                <h5><%=posts[k].title%></h5>
+                                <p>Post By: <%= people[j].name %></p>
+                                <p style="font-size:70%"><%= posts[k].post %></p>
+                            </div>
+                            <div class="col-3">
+                                <div style="background-image: url(<%=people[j].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:5em;"></div>
+                                <div>
+                                    <p style="font-size:70%">Posted on: </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
                         <%}%>
                         <%}%>
                     </div>
