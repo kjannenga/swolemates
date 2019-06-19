@@ -28,23 +28,49 @@
 
 </nav>
 <div class="container">
-    <h1>Welcome to your profile <%=user.name%>!</h1>
-    <button ></button>
-    <div class="row d-flex justify-content-center pt-5">
+    <div class="row d-flex justify-content-center">
         <div class="section text-center col-5">
-            <h5>Your Gym</h5>
-                <h5><%= gym.gymName %></h5>
-
+            <p>Your Gym :  <span><%= gyms.gymName %></span></p>
         </div>
     </div>
+    <div class="row d-flex justify-content-around">
 
-    <div>
-        <p>
-            <button><a href="/gymChat">Gym Chat</a></button>
-            <button><a href="/gymEvents">Gym Events</a></button>
-        </p>
+        <div class="col-5">
+            <h5>Most Recent Events</h5>
+            <% for (let i = 0; i < events.length && i < 2; i++) { %>
+                <a href="gymEvent/<%= events[i].id %>">
+                    <div class="card p-3 m-2" style="height:10em;">
+                        <h5><%=events[i].title%></h5>
+                        <p>At <%= gyms.gymName %></p>
+                        <p><%= events[i].eventInfo %></p>
+                        <p><%=events[i].date%></p>
+                    </div>
+                </a>
+            <%}%>
+            <div class="row mx-2">
+                <a href="/gymEvents"><button type="button" class="btn btn-outline-secondary">See All Events</button></a>
+            </div>
+        </div>
+        <div class="col-5">
+            <h5>Most Recent Posts</h5>
+            <% for (let k = 0; k < posts.length && k < 2 ; k++) { %>
+                <a href="gymPost/<%= posts[k].id %>">
+                    <div class="card p-3 m-2" style="height:10em;">
+                        <% for (let j = 0; j < people.length; j++) { %>
+                        <%if(posts[k].userId == people[j].id) {%>
+                        <h5><%=posts[k].title%></h5>
+                        <p>Post By: <%= people[j].name %></p>
+                        <p><%= posts[k].post %></p>
+                        <%}%>
+                        <%}%>
+                    </div>
+                </a>
+            <%}%>
+            <div class="row mx-2">
+                <a href="/gymChat"><button type="button"  class="btn btn-outline-secondary ">See All Posts</button></a>
+            </div>
+        </div>
     </div>
-
 
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

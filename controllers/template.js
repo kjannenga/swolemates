@@ -40,7 +40,26 @@ module.exports = {
   },
   profile: function(req,res){
     knex('gyms').where('id', req.session.user.gymId).then((results)=> {
-        res.render('profile', {user: req.session.user, gym: results[0]});
+      knex('gymPosts').where('gymId', req.session.user.gymId).then((postResults)=> {
+        knex('gymComments').then((commentResults)=> {
+          knex('gymEvents').where('gymId', req.session.user.gymId).then((eventResults)=> {
+            knex('gymEventComments').then((eventCommentResults)=> {
+          knex('users').then((userResults) => {
+            res.render('profile', {
+              user: req.session.user,
+              gyms: results[0],
+              posts: postResults,
+              comments: commentResults,
+              events: eventResults,
+              eventComments: eventCommentResults,
+              people: userResults
+            })
+          })
+
+            });
+          })
+        })
+      })
     })
   },
   edit: function (req,res){
