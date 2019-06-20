@@ -222,6 +222,13 @@ module.exports = {
       res.redirect(`/gymPost/${req.params.id}`)
     })
   },
+  userProfile: function (req,res){
+    knex('users').where('id', req.params.id).then( (results) => {
+      knex('gymPosts').where('userId', req.params.id).then( (posts) => {
+        res.render('userProfile', {user: req.session.user, person: results[0], posts})
+      })
+    })
+  },
 
 };
 

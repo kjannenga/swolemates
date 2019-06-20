@@ -21,6 +21,7 @@
                     <%=user.name%>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button"><a href="/userProfile/<%=user.id%>" class="text-dark">Edit Profile</a></button>
                     <button class="dropdown-item" type="button"><a href="/edit" class="text-dark">Edit Profile</a></button>
                     <hr>
                     <button class="dropdown-item" type="button"><a href="/logout" class="text-dark">Log Out</a></button>
@@ -47,7 +48,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <form action="/deleteUser/people[i].id" class="text-dark px-3" method="post"> <button class="btn btn-transparent" type="submit"><i class="far fa-trash-alt"></i> </button></form>
+                                <a href="/userProfile/<%= people[i].id%>" class="text-dark"><button class="btn btn-transparent"><i class="far fa-user"></i></button></a>
+                                <form action="/deleteUser/<%=people[i].id%>" class="text-dark px-3" method="post"> <button class="btn btn-transparent" type="submit"><i class="far fa-trash-alt"></i> </button></form>
                             </div>
                         </div>
                 <%}%>

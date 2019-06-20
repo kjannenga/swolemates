@@ -23,7 +23,8 @@ module.exports = function(app){
   app.get('/gymEvent/:id', template.gymEvent);
   app.post('/addGymComment/:id', template.addGymEventComment);
   app.get('/gymPost/:id', template.gymPost);
-  app.post('/addPostComment/:id', template.addPostComment)
+  app.post('/addPostComment/:id', template.addPostComment);
+  app.get('/userProfile/:id', template.userProfile)
 };
 
 
