@@ -10,6 +10,8 @@ module.exports = function(app){
   app.use(authUser);
   app.get('/profile', template.profile);
   app.get('/edit', template.edit);
+  app.get('/members', template.members);
+  app.post('/deleteUser/:id', template.deleteUser);
   app.post('/editProfile', template.editProfile);
   app.get('/logout', template.logout);
   app.get('/gymChat', template.gymChat);

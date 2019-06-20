@@ -5,8 +5,8 @@
     <script src="https://kit.fontawesome.com/140ac781e8.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-<nav class="navbar sticky-top navbar-dark mb-5 shadow-lg" style="background-color:#d4d4d4">
+<body class="bg-light">
+<nav class="navbar sticky-top navbar-light mb-5 shadow" style="background-color:#d4d4d4">
     <div class="row d-flex pl-3">
         <a class="navbar-brand" href="/">SwoleMates</a>
     </div>
@@ -50,7 +50,7 @@
                 <h5 class="text-center">Posts</h5>
             <% for (let k = 0; k < posts.length ; k++) { %>
                 <a class="text-dark" href="gymPost/<%= posts[k].id %>">
-                    <div class="card p-3 my-2 overflow-hidden" style="height:12em;">
+                    <div class="card p-3 my-2 overflow-hidden shadow" style="height:12em;">
                                 <div class="row">
                                     <div class="col-8 ">
                                         <% for (let j = 0; j < people.length; j++) { %>
@@ -61,9 +61,7 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="mx-4" style="background-image: url(<%=people[j].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:6em;"></div>
-                                        <div>
-                                            <p style="font-size:70%">Posted on: </p>
-                                        </div>
+
                                     </div>
                                 </div>
 

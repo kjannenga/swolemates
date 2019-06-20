@@ -6,8 +6,8 @@
     <script src="https://kit.fontawesome.com/140ac781e8.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-<nav class="navbar sticky-top navbar-dark mb-4 shadow" style="background-color:#d4d4d4">
+<body class="bg-light">
+<nav class="navbar sticky-top navbar-light mb-4 shadow" style="background-color:#d4d4d4">
     <div class="row d-flex pl-3">
         <a class="navbar-brand" href="/">SwoleMates</a>
     </div>
@@ -58,7 +58,7 @@
                                                     </div>
                                                     <div class="col-4" style="font-size: 70%">
                                                         <p> date: <%= moment(events[i].date).format('MMMM Do')%></p>
-                                                        <p>intensity: <%= events[i].intensity%></p>
+                                                        <p>intensity: <%= events[i].intensity%> / 10</p>
                                                     </div>
                                                 </div>
                                                 <% if ( user.isAdmin == 1) {%>

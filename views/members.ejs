@@ -2,24 +2,27 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+
+    <script src="https://kit.fontawesome.com/140ac781e8.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<nav class="navbar sticky-top navbar-light mb-5 shadow" style="background-color:#d4d4d4">
+<nav class="navbar sticky-top navbar-light mb-4 shadow" style="background-color:#d4d4d4">
     <div class="row d-flex pl-3">
         <a class="navbar-brand" href="/">SwoleMates</a>
     </div>
     <div class="float-right">
         <div class="row font-weight-light">
-            <a href="/gymChat" class="text-dark pt-1 ">Gym Chat</a>
-            <a href="/gymEvents" class="px-3 text-dark pt-1">Gym Events</a>
+            <a href="/profile" class="text-dark pt-1">Home</a>
+            <a href="/gymChat" class="text-dark pt-1 px-3">Gym Chat</a>
+            <a href="/gymEvents" class=" text-dark pt-1 pr-3">Gym Events</a>
             <div class="dropdown pr-3">
                 <button class="btn btn-secondary dropdown-toggle font-weight-lighter py-1" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                     <%=user.name%>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button"><a href="/profile" class="text-dark">Home</a></button>
                     <button class="dropdown-item" type="button"><a href="/edit" class="text-dark">Edit Profile</a></button>
+                    <hr>
                     <button class="dropdown-item" type="button"><a href="/logout" class="text-dark">Log Out</a></button>
                 </div>
             </div>
@@ -27,28 +30,30 @@
     </div>
 
 </nav>
-<div class="container">
-
-    <button><a href="/gymEvents">Back</a></button>
-    <h5>Event</h5>
-    <h5><%= events.title %></h5>
-    <p><%=events.eventInfo%></p>
-    <p><%= events.date%></p>
-    <h5>Add comment</h5>
-    <form action="/addGymComment/<%= events.id %>" method="post">
-        <textarea class="form-control mb-2" name="comment" placeholder="Comment"></textarea>
-        <input class="form-control" type="submit">
-    </form>
-    <% for (let i = 0; i < comments.length; i++) { %>
-            <div class="card p-3 m-2">
-                <% for (let j = 0; j < people.length; j++) { %>
-                <%if(comments[i].userId == people[j].id) {%>
-                <p><%= people[j].name %></p>
-                <p><%= comments[i].comment %></p>
-                <%}%>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-8">
+            <div class="">
+                <h5 class="text-center">Gym Members</h5>
+                <% for (let i = 0; i < people.length && i < 2; i++) { %>
+                        <div class="card p-3 my-2 text-dark overflow-hidden" style="height:7em;">
+                            <div class="row px-5">
+                                <div class="col-9">
+                                    <h5><%=people[i].name%></h5>
+                                    <p style="font-size:70%"><%= people[i].bio %></p>
+                                </div>
+                                <div class="col-3" style="font-size: 70%">
+                                    <div class="p-4 mx-5" style="background-image: url(<%=people[i].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:2.5em;"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <form action="/deleteUser/people[i].id" class="text-dark px-3" method="post"> <button class="btn btn-transparent" type="submit"><i class="far fa-trash-alt"></i> </button></form>
+                            </div>
+                        </div>
                 <%}%>
             </div>
-    <%}%>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -66,6 +66,21 @@ module.exports = {
       })
     })
   },
+  members: function (req,res){
+    knex('users').where('gymId', req.session.user.gymId).then((userResults) => {
+      res.render('members', {
+        moment: moment,
+        user: req.session.user,
+        people: userResults
+      })
+    })
+  },
+  deleteUser: function (req,res){
+    knex('users').where('id', req.params.id).del()
+        .then(() =>{
+          res.redirect('/members')
+        })
+  },
   edit: function (req,res){
     knex('gyms').then((results)=>{
       knex('users').where('id', req.session.user.id).then( () => {
