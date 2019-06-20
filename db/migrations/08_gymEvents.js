@@ -3,7 +3,8 @@ exports.up = knex => {
         table.increments();
         table.string('title');
         table.string('eventInfo');
-        table.string('date');
+        table.date('date');
+        table.integer('intensity');
         table.integer('gymId')
             .references('id')
             .inTable('gyms')

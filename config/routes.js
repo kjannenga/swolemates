@@ -15,6 +15,7 @@ module.exports = function(app){
   app.get('/gymChat', template.gymChat);
   app.post('/addGymPost', template.addGymPost);
   app.post('/delete/:id', template.deletePost);
+  app.post('/deleteEvent/:id', template.deleteEvent);
   app.get('/gymEvents', template.gymEvents);
   app.post('/addGymEvent', template.addGymEvent);
   app.get('/gymEvent/:id', template.gymEvent);

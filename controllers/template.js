@@ -1,6 +1,9 @@
 const knex = require("../db/knex.js");
+const moment = require('moment');
+
 
 module.exports = {
+
   // CHANGE ME TO AN ACTUAL FUNCTION
   index: function(req, res) {
     res.render('index', {user:req.session.user});
@@ -46,6 +49,7 @@ module.exports = {
             knex('gymEventComments').then((eventCommentResults)=> {
           knex('users').then((userResults) => {
             res.render('profile', {
+              moment:moment,
               user: req.session.user,
               gyms: results[0],
               posts: postResults,
@@ -112,6 +116,7 @@ module.exports = {
         knex('gymEventComments').then((commentResults)=> {
           knex('users').then((userResults) => {
             res.render('gymEvents', {
+              moment:moment,
               user: req.session.user,
               gyms: results[0],
               events: eventResults,
@@ -129,6 +134,12 @@ module.exports = {
           res.redirect('/gymChat')
         })
   },
+  deleteEvent: function(req,res){
+    knex('gymEvents').where('id', req.params.id).del()
+        .then(() =>{
+          res.redirect('/gymEvents')
+        })
+  },
   addGymPost: function (req,res){
     knex('gymPosts').insert({
       title: req.body.title,
@@ -144,6 +155,7 @@ module.exports = {
       title: req.body.title,
       eventInfo: req.body.eventInfo,
       date: req.body.date,
+      intensity: req.body.intensity,
       gymId:req.session.user.gymId
     }).then(()=>{
       res.redirect('/gymEvents')
@@ -154,6 +166,7 @@ module.exports = {
       knex('users').then((userResults) => {
         knex('gymEventComments').where('eventId', req.params.id).then( (commentResults) => {
           res.render('gymEvent', {
+            moment:moment,
             user: req.session.user,
             events: results[0],
             comments: commentResults,

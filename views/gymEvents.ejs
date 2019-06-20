@@ -2,6 +2,8 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+
+    <script src="https://kit.fontawesome.com/140ac781e8.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -28,42 +30,47 @@
     </div>
 
 </nav>
-    <div class="container">
+    <div class ="container-fluid">
         <div class="row d-flex justify-content-center">
-            <div class="section text-center">
+            <div>
                 <div class="pt-4">
                     <% if (user.isAdmin == 1) {%>
-                    <h5>Add Event</h5>
+                    <h5 class="text-center">Add Event</h5>
                     <form action="/addGymEvent" method="post">
                         <input class="form-control mb-2" type='text' name="title" placeholder="Title">
                         <textarea class="form-control mb-2" name="eventInfo" placeholder="Event Info"></textarea>
-                        <input class="form-control mb-2" type='text' name="date" placeholder="Date">
+                        <input class="form-control mb-2" type='date' name="date" placeholder="Date">
+                        <input class="form-control mb-2" type='number' name="intensity" placeholder="intensity">
                         <input class="form-control" type="submit">
                     </form>
                     <%}%>
-                        <div class="row d-flex justify-content-center">
-                            <div class="section col-7">
-                    <h5>Events</h5>
-                        <% for (let i = 0; i < events.length && i < 2; i++) { %>
-                            <a href="gymEvent/<%= events[i].id %>">
-                                <div class="card p-3 my-2 text-dark overflow-hidden" style="height:10em;">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <h5><%=events[i].title%></h5>
-                                            <p style="font-size:70%"><%= events[i].eventInfo %></p>
-                                        </div>
-                                        <div class="col-3" style="font-size: 70%">
-                                            <p> date: <%=events[i].date%></p>
-                                            <p>time: </p>
-                                            <p>intensity: </p>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-8">
+                                <div class="">
+                                    <h5 class="text-center">Events</h5>
+                                    <% for (let i = 0; i < events.length && i < 2; i++) { %>
+                                        <a href="gymEvent/<%= events[i].id %>">
+                                            <div class="card p-3 my-2 text-dark overflow-hidden" style="height:10em;">
+                                                <div class="row px-5">
+                                                    <div class="col-8">
+                                                        <h5><%=events[i].title%></h5>
+                                                        <p style="font-size:70%"><%= events[i].eventInfo %></p>
+                                                    </div>
+                                                    <div class="col-4" style="font-size: 70%">
+                                                        <p> date: <%= moment(events[i].date).format('MMMM Do')%></p>
+                                                        <p>intensity: <%= events[i].intensity%></p>
+                                                    </div>
+                                                </div>
+                                                <% if ( user.isAdmin == 1) {%>
+                                                <div class="row">
+                                                    <form action="/deleteEvent/<%=events[i].id%>" class="text-dark px-3" method="post"> <button class="btn btn-transparent" type="submit"><i class="far fa-trash-alt"></i> </button></form>
+                                                </div>
+                                                <%}%>
+                                            </div>
+                                        </a>
+                                    <%}%>
+                        </div>
 
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </a>
-                        <%}%>
                 </div>
                         </div>
                 </div>
