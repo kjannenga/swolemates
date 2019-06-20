@@ -40,8 +40,10 @@
             <div class="row d-flex justify-content-center">
                 <% for (let k = 0; k < people.length; k++) { %>
                 <%if(post.userId == people[k].id) {%>
-                    <p class="my-auto">Post By: <%= people[k].name %>  </p>
-                    <div class="ml-4" style="background-image: url(<%=people[k].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:4em; width:4em;"></div>
+                    <p class="my-auto"><%= people[k].name %>  </p>
+                    <div class="mx-4" style="background-image: url(<%=people[k].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:4em; width:4em;"></div>
+                    <a  href="/userProfile/<%= people[k].id%>" class="text-dark my-auto"><button class="btn btn-transparent "><i class="far fa-user"></i></button></a>
+
                 <%}%>
                 <%}%>
             </div>
