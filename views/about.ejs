@@ -1,0 +1,99 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About SwoleMates</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="" >
+ <nav class="navbar sticky-top navbar-light shadow mb-4"  style="background-color:#d4d4d4">
+        <div class="row d-flex pl-3">
+            <a class="navbar-brand" href="/">SwoleMates</a>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/partner">Become a Partner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        <%if (user != null) {%>
+            <a href="/profile" class="text-dark pt-1"><button class="btn btn-outline-light px-3" style="background:rgba(0,0,0,.5)"> Home </button></a>
+        <%} else {%>
+            <div class="float-right">
+                <a href="/login" class="text-light pr-2"><button class="btn btn-outline-light px-3" style="background:rgba(0,0,0,.5)"> Log In </button></a>
+                <a href="/signup" class="text-light"><button class="btn btn-outline-light" style="background:rgba(0,0,0,.5)">Sign Up</button></a>
+            </div>
+        <%}%>
+    </nav>
+<div>
+    <div class="section mb-5">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-md-6 text-center text-md-right">
+                    <h3 class="">Workout Partners for All</h3>
+                    <br>
+                    <p>Instrument cultivated alteration any favourable expression law far nor. Both new like tore but year. An from mean on with when sing pain. Oh to as principles devonshire companions unsatiable an delightful. The ourselves suffering the sincerity. Inhabit her manners adapted age certain. Debating offended at branched striking be subjects.</p>
+                </div>
+                <div class="col-6">
+                    <div class="py-5" style="background-image: url(https://images.unsplash.com/photo-1519311965067-36d3e5f33d39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80); background-position:center; background-size: cover; height:14em; border-radius: 10%" >
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="section mt-5">
+        <div class="container" style="font-size:70%">
+            <header class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <hr>
+                <p>Got a question? We've got answers. If you have some other questions, contact us using email.</p>
+            </header>
+
+
+            <div class="row gap-y">
+                <div class="col-md-6 col-xl-4">
+                    <h5>Is this a secure site for purchases?</h5>
+                    <p>Absolutely! We work with top payment companies which guarantees your safety and security. All billing information is stored on our payment processing partner which has the most stringent level of certification available in the payments industry.</p>
+                </div>
+
+
+                <div class="col-md-6 col-xl-4">
+                    <h5>Can I cancel my subscription?</h5>
+                    <p>You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month. You will continue to have access to your account until your current subscription expires.</p>
+                </div>
+
+
+                <div class="col-md-6 col-xl-4">
+                    <h5>How long are your contracts?</h5>
+                    <p>Currently, we only offer monthly subscription. You can upgrade or cancel your monthly account at any time with no further obligation.</p>
+                </div>
+
+
+                <div class="col-md-6 col-xl-4">
+                    <h5>Can I update my card details?</h5>
+                    <p>Yes. Go to the billing section of your dashboard and update your payment information.</p>
+                </div>
+
+
+                <div class="col-md-6 col-xl-4">
+                    <h5>Can I request refund?</h5>
+                    <p>Unfortunately, not. We do not issue full or partial refunds for any reason.</p>
+                </div>
+
+
+                <div class="col-md-6 col-xl-4">
+                    <h5>Can I try your service for free?</h5>
+                    <p>Of course! We’re happy to offer a free plan to anyone who wants to try our service.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -3,6 +3,9 @@ const template = require("../controllers/template.js");
 module.exports = function(app){
 
   app.get('/', template.index);
+  app.get('/about', template.about);
+  app.get('/contact', template.contact);
+  app.get('/partner', template.partner);
   app.get('/login', template.loginPage);
   app.get('/signup', template.signupPage);
   app.post('/login', template.login);

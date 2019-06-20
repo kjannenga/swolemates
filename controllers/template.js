@@ -8,6 +8,15 @@ module.exports = {
   index: function(req, res) {
     res.render('index', {user:req.session.user});
   },
+  about: function(req, res) {
+    res.render('about', {user:req.session.user});
+  },
+  contact: function(req, res) {
+    res.render('contact', {user:req.session.user});
+  },
+  partner: function(req, res) {
+    res.render('partner', {user:req.session.user});
+  },
   loginPage: function(req, res) {
     res.render('login');
   },

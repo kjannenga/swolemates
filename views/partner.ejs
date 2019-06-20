@@ -1,0 +1,140 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Become a Partner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="bg-light" >
+<nav class="navbar sticky-top navbar-light shadow mb-4"  style="background-color:#d4d4d4">
+    <div class="row d-flex pl-3">
+        <a class="navbar-brand" href="/">SwoleMates</a>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/partner">Become a Partner</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/contact">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+    <%if (user != null) {%>
+        <a href="/profile" class="text-dark pt-1"><button class="btn btn-outline-light px-3" style="background:rgba(0,0,0,.5)"> Home </button></a>
+    <%} else {%>
+        <div class="float-right">
+            <a href="/login" class="text-light pr-2"><button class="btn btn-outline-light px-3" style="background:rgba(0,0,0,.5)"> Log In </button></a>
+            <a href="/signup" class="text-light"><button class="btn btn-outline-light" style="background:rgba(0,0,0,.5)">Sign Up</button></a>
+        </div>
+    <%}%>
+</nav>
+<div>
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="row gap-y align-items-center">
+
+                <div class="col-md-4">
+                    <p class="lead-7 text-dark fw-600 lh-2">The most fare pricing plans ever.</p>
+
+                    <div class="btn-group btn-group-toggle my-7" data-toggle="buttons">
+                        <label class="btn btn-round btn-outline-dark w-150 active">
+                            <input type="radio" name="pricing-6" value="monthly" autocomplete="off" checked=""> Monthly
+                        </label>
+                        <label class="btn btn-round btn-outline-dark w-150">
+                            <input type="radio" name="pricing-6" value="yearly" autocomplete="off"> Yearly
+                        </label>
+                    </div>
+
+                    <p class="lead">Our prices are very easy to understand. There's not any extra or hidden fee. You just pay what is listed here.</p>
+                    <p class="fw-400"><a href="#">View full pricing details <i class="ti-arrow-right fs-10 ml-2"></i></a></p>
+                </div>
+
+
+                <div class="col-md-7 ml-auto">
+                    <div class="row gap-y">
+
+                        <div class="col-md-6">
+                            <div class="card text-center shadow-1 hover-shadow-9">
+                                <div class="card-img-top text-white bg-img h-200 d-flex align-items-center py-5" style="background-image: url(https://images.unsplash.com/photo-1517963879433-6ad2b056d712?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80); background-position:center; background-size: cover;" >
+                                    <div class="position-relative w-100">
+                                        <p class="lead-4 text-uppercase fw-600 ls-1 mb-0">Starter</p>
+                                        <p><span data-bind-radio="pricing-6" data-monthly="Monthly" data-yearly="Yearly">Monthly</span> Package</p>
+                                    </div>
+                                </div>
+                                <div class="card-body py-6">
+                                    <p class="lead-7 fw-600 text-dark">
+                                        <span data-bind-radio="pricing-6" data-monthly="$6." data-yearly="$60.">$6.</span><span class="lead-4 align-text-top">99</span>
+                                    </p>
+                                    <p>
+                                        Single Website<br>
+                                        60GB Bandwidth<br>
+                                        Manual Import<br>
+                                        No Support<br>
+                                    </p>
+                                    <br>
+                                    <div>
+                                        <a class="btn btn-round btn-outline-secondary w-200" href="#monthly" data-bind-href="pricing-6" data-monthly="#monthly" data-yearly="#yearly">Sign up</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card text-center shadow-1 hover-shadow-9">
+                                <div class="card-img-top text-white bg-img h-200 d-flex align-items-center py-5" style="background-image: url(https://images.unsplash.com/photo-1517963628607-235ccdd5476c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80); background-position:center; background-size: cover;" >
+                                    <div class="position-relative w-100">
+                                        <p class="lead-4 text-uppercase fw-600 ls-1 mb-0">Business</p>
+                                        <p><span data-bind-radio="pricing-6" data-monthly="Monthly" data-yearly="Yearly">Monthly</span> Package</p>
+                                    </div>
+                                </div>
+                                <div class="card-body py-6">
+                                    <p class="lead-7 fw-600 text-dark">
+                                        <span data-bind-radio="pricing-6" data-monthly="$18." data-yearly="$180.">$18.</span><span class="lead-4 align-text-top">99</span>
+                                    </p>
+                                    <p>
+                                        7 Website<br>
+                                        Unlimited Bandwidth<br>
+                                        Auto Import<br>
+                                        Email Support<br>
+                                    </p>
+                                    <br>
+                                    <div>
+                                        <a class="btn btn-round btn-secondary w-200" href="#monthly" data-bind-href="pricing-6" data-monthly="#monthly" data-yearly="#yearly">Sign up</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="section bg-light mt-4 pt-3">
+        <div class="container">
+
+            <h3 class="text-center pb-2">Start Using SwoleMates Now!</h3>
+
+            <form class="row gap-y mt-7">
+                <div class="col-md-6 col-lg-3">
+                    <input type="text" class="form-control" placeholder="Name">
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <input type="text" class="form-control" placeholder="Email">
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+                    <button class="btn btn-secondary">Get Started</button>
+
+            </form>
+
+        </div>
+    </section>
+</div>
+</body>
+</html>
