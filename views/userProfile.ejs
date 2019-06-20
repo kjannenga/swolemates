@@ -33,23 +33,22 @@
 
 <div class="container-fluid">
     <div class="row">
-       <div class="col-3">
-           <div class="mx-4 my-3" style="background-image: url(<%=person.imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:7em; width:7em;"></div>
+        <div class="col-3">
+            <div class="mx-4 my-3" style="background-image: url(<%=person.imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:7em; width:7em;"></div>
             <h5 class="mx-4"><%= person.name%></h5>
-           <p class="mx-4"><%= person.bio%></p>
-       </div>
+            <p class="mx-4"><%= person.bio%></p>
+        </div>
 
         <div class="col-9">
             <div class="row d-flex justify-content-center">
-
-                <% for (let k = 0; k < posts.length ; k++) { %>
-                    <a class="text-dark" href="/gymPost/<%= posts[k].id %>">
+                <% for (let i = 0; i < posts.length ; i++) { %>
+                    <a class="text-dark" href="/gymPost/<%= posts[i].id %>">
                         <div class="card col-7 p-3 my-2 overflow-hidden shadow" style="height:12em;">
                             <div class="row">
                                 <div class="col-9">
                                     <h5><%=posts.title%></h5>
                                     <p>Post By: <%= person.name %></p>
-                                    <p style="font-size:70%"><%= posts[k].post %></p>
+                                    <p style="font-size:70%"><%= posts[i].post %></p>
                                 </div>
                                 <div class="col-3">
                                     <div class="mt-3" style="background-image: url(<%=person.imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:5em; width:5em;"></div>
@@ -58,13 +57,12 @@
                             <div class="row">
                                 <a href="/userProfile/<%= person.id%>" class="text-dark"><button class="btn btn-transparent"><i class="far fa-user"></i></button></a>
                                 <% if (person.id == user.id || user.isAdmin == 1) {%>
-                                <form action="/delete/<%=posts[k].id%>" class="text-dark" method="post"> <button class="btn btn-transparent" type="submit"><i class="far fa-trash-alt"></i> </button></form>
+                                <form action="/delete/<%=posts[i].id%>" class="text-dark" method="post"> <button class="btn btn-transparent" type="submit"><i class="far fa-trash-alt"></i> </button></form>
+                                <%}%>
                             </div>
-                            <%}%>
                         </div>
                     </a>
                 <%}%>
-
             </div>
         </div>
     </div>

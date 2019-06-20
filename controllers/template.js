@@ -44,7 +44,14 @@ module.exports = {
       let user = results[0];
       if(user.password === req.body.password){
         req.session.user = user;
-        res.redirect('/profile')
+        req.session.save((err) => {
+          if(err){
+            res.redirect('/index')
+          }else{
+            res.redirect('/profile')
+          }
+        });
+
       }else{
         res.redirect('/index');
       }
