@@ -123,6 +123,12 @@ module.exports = {
       })
     })
   },
+  deletePost: function(req,res){
+    knex('gymPosts').where('id', req.params.id).del()
+        .then(() =>{
+          res.redirect('/gymChat')
+        })
+  },
   addGymPost: function (req,res){
     knex('gymPosts').insert({
       title: req.body.title,

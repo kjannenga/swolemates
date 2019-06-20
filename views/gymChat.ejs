@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="https://kit.fontawesome.com/140ac781e8.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -38,38 +39,40 @@
                 <input class="form-control mb-2" type='text' name="title" placeholder="Title">
                 <textarea class="form-control mb-2" name="post" placeholder="Post" ></textarea>
         </div>
-
         <div class="col-2">
             <input class="form-control" type="submit" >
             </form>
         </div>
-
-
     </div>
 
     <div class="row d-flex justify-content-center">
         <div class="section col-7">
                 <h5 class="text-center">Posts</h5>
             <% for (let k = 0; k < posts.length ; k++) { %>
-                <a href="gymPost/<%= posts[k].id %>">
-                    <div class="card p-3 my-2 text-dark overflow-hidden" style="height:10em;">
-                        <div class="row">
-                            <div class="col-8">
-                                <% for (let j = 0; j < people.length; j++) { %>
-                                <%if(posts[k].userId == people[j].id) {%>
-                                <h5><%=posts[k].title%></h5>
-                                <p>Post By: <%= people[j].name %></p>
-                                <p style="font-size:70%"><%= posts[k].post %></p>
-                            </div>
-                            <div class="col-4">
-                                <div class="mx-4" style="background-image: url(<%=people[j].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:6em;"></div>
-                                <div>
-                                    <p style="font-size:70%">Posted on: </p>
+                <a class="text-dark" href="gymPost/<%= posts[k].id %>">
+                    <div class="card p-3 my-2 overflow-hidden" style="height:12em;">
+                                <div class="row">
+                                    <div class="col-8 ">
+                                        <% for (let j = 0; j < people.length; j++) { %>
+                                        <%if(posts[k].userId == people[j].id) {%>
+                                        <h5><%=posts[k].title%></h5>
+                                        <p>Post By: <%= people[j].name %></p>
+                                        <p style="font-size:70%"><%= posts[k].post %></p>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="mx-4" style="background-image: url(<%=people[j].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:6em;"></div>
+                                        <div>
+                                            <p style="font-size:70%">Posted on: </p>
+                                        </div>
+                                    </div>
                                 </div>
+
+                        <% if (people[j].id == user.id || user.isAdmin == 1) {%>
+                            <div class="row">
+<!--                                <a href="/delete/posts[k].id" class="text-dark px-3"><i class="far fa-edit"></i></a>-->
+                                <form action="/delete/<%=posts[k].id%>" class="text-dark px-3" method="post"> <button class="btn btn-transparent" type="submit"><i class="far fa-trash-alt"></i> </button></form>
                             </div>
-                        </div>
-
-
+                        <%}%>
                         <%}%>
                         <%}%>
                     </div>

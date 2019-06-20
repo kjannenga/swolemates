@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar sticky-top navbar-dark mb-5 shadow-lg" style="background:rgba(0,0,0,.17)">
+<nav class="navbar sticky-top navbar-dark mb-4 shadow" style="background:rgba(0,0,0,.17)">
     <div class="row d-flex pl-3">
         <a class="navbar-brand" href="/">SwoleMates</a>
     </div>
@@ -32,6 +32,9 @@
     <div class="row d-flex justify-content-center">
         <div class="section text-center col-5">
             <p>Your Gym :  <span><%= gyms.gymName %></span></p>
+            <% if (user.isAdmin == 1) {%>
+                <a href="/members" class="text-light"><button class="btn btn-secondary font-weight-lighter" type="button">Your Members</button></a>
+            <%}%>
         </div>
     </div>
     <div class="row d-flex justify-content-around">
