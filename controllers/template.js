@@ -69,7 +69,6 @@ module.exports = {
   members: function (req,res){
     knex('users').where('gymId', req.session.user.gymId).then((userResults) => {
       res.render('members', {
-        moment: moment,
         user: req.session.user,
         people: userResults
       })

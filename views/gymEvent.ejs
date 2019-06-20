@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<nav class="navbar sticky-top navbar-light mb-5 shadow" style="background-color:#d4d4d4">
+<nav class="navbar sticky-top navbar-light mb-4 shadow" style="background-color:#d4d4d4">
     <div class="row d-flex pl-3">
         <a class="navbar-brand" href="/">SwoleMates</a>
     </div>
@@ -29,26 +29,43 @@
 </nav>
 <div class="container">
 
-    <button><a href="/gymEvents">Back</a></button>
-    <h5>Event</h5>
-    <h5><%= events.title %></h5>
-    <p><%=events.eventInfo%></p>
-    <p><%= events.date%></p>
-    <h5>Add comment</h5>
-    <form action="/addGymComment/<%= events.id %>" method="post">
-        <textarea class="form-control mb-2" name="comment" placeholder="Comment"></textarea>
-        <input class="form-control" type="submit">
-    </form>
-    <% for (let i = 0; i < comments.length; i++) { %>
-            <div class="card p-3 m-2">
-                <% for (let j = 0; j < people.length; j++) { %>
-                <%if(comments[i].userId == people[j].id) {%>
-                <p><%= people[j].name %></p>
-                <p><%= comments[i].comment %></p>
-                <%}%>
-                <%}%>
+    <a href="/gymEvents" ><button class="btn btn-secondary mb-3">All Events</button></a>
+    <div class="text-center">
+        <h5 ><%= events.title %></h5>
+        <p><%=events.eventInfo%></p>
+        <p>Date: <%= moment(events.date).format('MMMM Do')%></p>
+        <p>Intensity: <%= events.intensity%> / 10</p>
+    </div>
+<div class="row d-flex justify-content-center">
+    <div class="col-9">
+        <form action="/addGymComment/<%= events.id %>" method="post">
+            <textarea class="form-control mb-2" name="comment" placeholder="Comment"></textarea>
+            <input class="form-control" type="submit">
+        </form>
+        <% for (let i = 0; i < comments.length; i++) { %>
+            <% for (let j = 0; j < people.length; j++) { %>
+            <%if(comments[i].userId == people[j].id) {%>
+            <div class="card p-3 my-2 shadow-sm" style="height:10em;">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="m-4" style="background-image: url(<%=people[j].imgUrl%>); background-position:center; background-size: cover; border-radius: 50%; height:5em;"></div>
+                    </div>
+                    <div class="col-9">
+
+                        <p><%= people[j].name %></p>
+                        <p><%= comments[i].comment %></p>
+                        <%}%>
+                        <%}%>
+                    </div>
+                </div>
+
+
             </div>
-    <%}%>
+        <%}%>
+    </div>
+</div>
+
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
