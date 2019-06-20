@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar sticky-top navbar-dark mb-5 shadow-lg" style="background:rgba(0,0,0,.17)">
+<nav class="navbar sticky-top navbar-dark mb-4 shadow" style="background-color:#d4d4d4">
     <div class="row d-flex pl-3">
         <a class="navbar-brand" href="/">SwoleMates</a>
     </div>
@@ -29,7 +29,7 @@
 
 </nav>
     <div class="container">
-        <div class="row d-flex justify-content-center pt-5">
+        <div class="row d-flex justify-content-center">
             <div class="section text-center">
                 <div class="pt-4">
                     <% if (user.isAdmin == 1) {%>
@@ -41,17 +41,31 @@
                         <input class="form-control" type="submit">
                     </form>
                     <%}%>
+                        <div class="row d-flex justify-content-center">
+                            <div class="section col-7">
                     <h5>Events</h5>
-                    <% for (let i = 0; i < events.length; i++) { %>
-                        <a href="gymEvent/<%= events[i].id %>">
-                            <div class="card p-3 m-2">
-                                <h5><%=events[i].title%></h5>
-                                <p>At <%= gyms.gymName %></p>
-                                <p><%= events[i].eventInfo %></p>
-                                <p><%=events[i].date%></p>
-                            </div>
-                        </a>
-                    <%}%>
+                        <% for (let i = 0; i < events.length && i < 2; i++) { %>
+                            <a href="gymEvent/<%= events[i].id %>">
+                                <div class="card p-3 my-2 text-dark overflow-hidden" style="height:10em;">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h5><%=events[i].title%></h5>
+                                            <p style="font-size:70%"><%= events[i].eventInfo %></p>
+                                        </div>
+                                        <div class="col-3" style="font-size: 70%">
+                                            <p> date: <%=events[i].date%></p>
+                                            <p>time: </p>
+                                            <p>intensity: </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </a>
+                        <%}%>
+                </div>
+                        </div>
                 </div>
             </div>
         </div>
