@@ -20,13 +20,15 @@
                     <a class="nav-link text-light" href="#">Contact Us</a>
                 </li>
             </ul>
-
         </div>
-
+        <%if (user != null) {%>
+            <a href="/profile" class="text-dark pt-1"><button class="btn btn-outline-light px-3" style="background:rgba(0,0,0,.5)"> Home </button></a>
+        <%} else {%>
         <div class="float-right">
             <a href="/login" class="text-light pr-2"><button class="btn btn-outline-light px-3" style="background:rgba(0,0,0,.5)"> Log In </button></a>
             <a href="/signup" class="text-light"><button class="btn btn-outline-light" style="background:rgba(0,0,0,.5)">Sign Up</button></a>
         </div>
+        <%}%>
     </nav>
     <div class="row d-flex justify-content-center" >
         <div class="section text-center col-5 text-white pt-5 pb-5 mb-5">
